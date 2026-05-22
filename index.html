@@ -544,7 +544,6 @@
       <span class="ic">💬</span>LINEで紹介する
     </a>
     <div class="cta-sub">タップするとLINEのシェア画面が開きます</div>
-    <a class="cta-secondary" href="#" onclick="copyUrl(); return false;">URLをコピーする</a>
   </div>
 </div>
 
@@ -570,28 +569,15 @@
 </footer>
 
 <script>
-  // この URL（自分自身の公開URL）を後で差し替えてください
-  // Netlifyに上げたあとの実URLが入ります
-  const PAGE_URL = 'https://roaring-jalebi-fc4b71.netlify.app/referral.html';
-  const SHARE_TEXT = '【Riminaお友だち紹介】\nRiminaのトレーニング、すごく良かったのでシェアします！\n体験レッスンもあるのでよかったら見てみてね 🌸\n';
+  // 友だち追加URL（ハーネス経由・ref=referral で「友達紹介ページ経由」を計測）
+  const PAGE_URL = 'https://line-harness.rimina.workers.dev/auth/line?ref=referral';
+  const SHARE_TEXT = '【Riminaお友だち紹介キャンペーン🌸】\n女性専用オンラインフィットネス「Rimina」、すごく良かったのでシェアします！\nいまお友だち紹介キャンペーン中✨\n下のリンクからLINEを追加して、まずは無料体験から。気に入ったらぜひ一緒に続けましょう☺️\n';
 
   function shareToLine() {
     const url = encodeURIComponent(PAGE_URL);
     const text = encodeURIComponent(SHARE_TEXT);
     // LINEのシェアURLスキーム
     window.location.href = `https://line.me/R/msg/text/?${text}${url}`;
-  }
-
-  function copyUrl() {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(PAGE_URL).then(() => {
-        alert('URLをコピーしました！\n' + PAGE_URL);
-      }).catch(() => {
-        prompt('このURLをコピーしてください', PAGE_URL);
-      });
-    } else {
-      prompt('このURLをコピーしてください', PAGE_URL);
-    }
   }
 </script>
 
