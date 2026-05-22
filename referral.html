@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5b8c4">
+<title>お友だち紹介キャンペーン｜Rimina</title>
+<meta property="og:title" content="お友だち紹介キャンペーン｜Rimina">
+<meta property="og:description" content="お友達を紹介すると会費500円引き（ずっと）。お友達は+4回チケットでスタートダッシュ！">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #fde6ec;
+    --bg-soft: #fff0f4;
+    --card-bg: #ffffff;
+    --rose: #f5a4b5;
+    --rose-deep: #e07a92;
+    --rose-dark: #c0617a;
+    --pink-highlight: #f9c9d2;
+    --yellow-highlight: #fdd7a3;
+    --text: #5a3a3a;
+    --text-soft: #8a6e72;
+    --brown: #4a2e2e;
+    --green-line: #06c755;
+    --gold: #d4af6e;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Maru Gothic ProN", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 60%, #fff 100%);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    min-height: 100vh;
+    padding-bottom: 100px;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    padding: 36px 20px 24px;
+    text-align: center;
+    position: relative;
+  }
+  .brand-mini {
+    font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    font-size: 12px;
+    color: var(--rose-deep);
+    opacity: 0.85;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    line-height: 1.3;
+    font-weight: 800;
+    color: var(--brown);
+    margin: 0 0 6px;
+    letter-spacing: 0.04em;
+  }
+  .hero h1 .hl {
+    background: linear-gradient(transparent 65%, var(--pink-highlight) 65%);
+    padding: 0 4px;
+  }
+  .hero .sub {
+    margin-top: 16px;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .hero .sub strong {
+    color: var(--rose-deep);
+    background: linear-gradient(transparent 60%, var(--yellow-highlight) 60%);
+    padding: 0 2px;
+  }
+
+  /* ===== Benefit cards ===== */
+  .benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 8px 18px 0;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  @media (min-width: 600px) {
+    .benefits { flex-direction: row; }
+    .benefit { flex: 1; }
+  }
+  .benefit {
+    background: var(--card-bg);
+    border-radius: 22px;
+    padding: 22px 18px 24px;
+    text-align: center;
+    border: 2px solid var(--rose);
+    box-shadow: 0 4px 18px rgba(224, 122, 146, 0.10);
+    position: relative;
+  }
+  .benefit::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--brown);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 22px;
+    border-radius: 18px;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+  }
+  .benefit-lead {
+    font-size: 14px;
+    color: var(--text-soft);
+    margin: 14px 0 4px;
+  }
+  .benefit-main {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--brown);
+    line-height: 1.3;
+    margin: 8px 0;
+  }
+  .benefit-main .accent {
+    color: var(--rose-deep);
+    font-size: 34px;
+  }
+  .benefit-main .num {
+    font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--rose-deep);
+    letter-spacing: -0.02em;
+  }
+  .benefit-underline {
+    height: 4px;
+    background: var(--pink-highlight);
+    width: 80%;
+    margin: 4px auto 12px;
+    border-radius: 2px;
+  }
+  .benefit-tag {
+    display: inline-block;
+    background: var(--bg);
+    color: var(--rose-deep);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 14px;
+    margin-top: 8px;
+  }
+  .benefit-emoji {
+    font-size: 50px;
+    line-height: 1;
+    margin: 8px 0 4px;
+  }
+
+  /* ===== Bonus (Change/me) ===== */
+  .bonus-section {
+    max-width: 720px;
+    margin: 30px auto 0;
+    padding: 0 18px;
+    position: relative;
+  }
+  .bonus-shikamo {
+    text-align: center;
+    margin-bottom: -10px;
+    position: relative;
+    z-index: 2;
+  }
+  .bonus-shikamo .shikamo-tag {
+    display: inline-block;
+    background: var(--brown);
+    color: #fff;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 6px 22px;
+    border-radius: 18px;
+    letter-spacing: 0.18em;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.06);
+  }
+  .bonus-shikamo .shikamo-tag .accent {
+    color: var(--yellow-highlight);
+  }
+  .bonus-card {
+    background: linear-gradient(135deg, #fff5f0 0%, #fff 60%, #fde7d6 100%);
+    border-radius: 22px;
+    border: 2.5px solid var(--gold);
+    padding: 28px 20px 22px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(212, 175, 110, 0.18);
+  }
+  .bonus-card .label-collab {
+    font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--rose-deep);
+    margin-bottom: 4px;
+  }
+  .bonus-card .label-collab .sep {
+    margin: 0 6px;
+    opacity: 0.4;
+  }
+  .bonus-card h2 {
+    font-size: 22px;
+    color: var(--brown);
+    margin: 6px 0 4px;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+  .bonus-card h2 .em {
+    background: linear-gradient(transparent 60%, var(--yellow-highlight) 60%);
+    padding: 0 4px;
+    color: var(--rose-deep);
+  }
+  .bonus-card .gift-emoji {
+    font-size: 42px;
+    margin: 8px 0 4px;
+  }
+  .bonus-card .product-img {
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    display: block;
+    margin: 6px auto 6px;
+    border-radius: 14px;
+  }
+  .bonus-card .body {
+    font-size: 13px;
+    color: var(--text);
+    margin: 10px auto;
+    line-height: 1.7;
+    max-width: 480px;
+  }
+  .bonus-card .body strong {
+    color: var(--rose-deep);
+    font-weight: 700;
+  }
+  .bonus-card .limited {
+    display: inline-block;
+    background: var(--rose-deep);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 12px;
+    margin-top: 8px;
+    letter-spacing: 0.1em;
+  }
+  .bonus-card .who {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .bonus-card .who-chip {
+    background: #fff;
+    border: 1.5px solid var(--rose);
+    color: var(--rose-deep);
+    border-radius: 14px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .bonus-card .who-chip::before {
+    content: "🎁 ";
+    margin-right: 2px;
+  }
+
+  /* ===== How to ===== */
+  .how-section {
+    max-width: 720px;
+    margin: 36px auto 0;
+    padding: 0 18px;
+  }
+  .section-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--brown);
+    margin: 0 0 6px;
+    letter-spacing: 0.04em;
+  }
+  .section-title .hl {
+    background: linear-gradient(transparent 65%, var(--pink-highlight) 65%);
+    padding: 0 4px;
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--text-soft);
+    font-size: 13px;
+    margin: 0 0 22px;
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .step {
+    background: var(--card-bg);
+    border: 1.5px solid #f7d5dc;
+    border-radius: 18px;
+    padding: 18px 18px 18px 64px;
+    position: relative;
+  }
+  .step .num {
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--rose);
+    color: #fff;
+    font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brown);
+    margin: 0 0 4px;
+  }
+  .step p {
+    font-size: 13px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ===== CTA ===== */
+  .cta-section {
+    max-width: 720px;
+    margin: 32px auto 0;
+    padding: 0 18px;
+  }
+  .cta-box {
+    background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%);
+    border-radius: 22px;
+    padding: 26px 22px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(224, 122, 146, 0.22);
+  }
+  .cta-box h2 {
+    font-size: 18px;
+    margin: 0 0 6px;
+    font-weight: 800;
+  }
+  .cta-box p {
+    font-size: 13px;
+    opacity: 0.95;
+    margin: 0 0 16px;
+    line-height: 1.6;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #fff;
+    color: var(--rose-deep);
+    font-weight: 800;
+    font-size: 16px;
+    padding: 14px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.06);
+    transition: transform 0.1s;
+  }
+  .cta-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
+  .cta-btn .ic { font-size: 20px; }
+  .cta-sub {
+    margin-top: 12px;
+    font-size: 11px;
+    opacity: 0.85;
+  }
+  .cta-secondary {
+    margin-top: 14px;
+    display: block;
+    color: #fff;
+    text-decoration: underline;
+    font-size: 13px;
+    opacity: 0.92;
+  }
+
+  /* ===== Notes ===== */
+  .notes {
+    max-width: 720px;
+    margin: 32px auto 0;
+    padding: 22px;
+    background: var(--card-bg);
+    border-radius: 18px;
+    border: 1.5px solid #f7d5dc;
+  }
+  .notes h3 {
+    font-size: 15px;
+    color: var(--brown);
+    margin: 0 0 10px;
+    font-weight: 700;
+  }
+  .notes ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .notes li { margin-bottom: 6px; }
+  .notes li:last-child { margin-bottom: 0; }
+  .notes strong {
+    color: var(--rose-deep);
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    text-align: center;
+    padding: 30px 18px 0;
+    color: var(--text-soft);
+    font-size: 12px;
+  }
+  footer .company {
+    font-weight: 700;
+    color: var(--rose-deep);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  /* sparkles */
+  .deco {
+    position: absolute;
+    pointer-events: none;
+    color: var(--rose);
+    opacity: 0.7;
+    font-size: 22px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="brand-mini">RIMINA</div>
+  <h1>
+    お友だち紹介<br>
+    <span class="hl">キャンペーン</span>
+  </h1>
+  <div class="sub">
+    お友達やご家族をご紹介いただくと<br>
+    大切な人と二人で<strong>Riminaを楽しめる</strong>！
+  </div>
+</div>
+
+<!-- ===== BENEFITS ===== -->
+<div class="benefits">
+  <div class="benefit" data-label="紹介者">
+    <div class="benefit-emoji">🎁</div>
+    <div class="benefit-lead">お友達おひとり毎に</div>
+    <div class="benefit-main">
+      会費<span class="num">500</span>円引き
+    </div>
+    <div class="benefit-underline"></div>
+    <div class="benefit-tag">しかも、ずーっと</div>
+  </div>
+  <div class="benefit" data-label="お友達">
+    <div class="benefit-emoji">✨</div>
+    <div class="benefit-lead">スタートダッシュ</div>
+    <div class="benefit-main">
+      <span class="accent">+</span><span class="num">4</span>回チケット
+    </div>
+    <div class="benefit-underline"></div>
+    <div class="benefit-tag">入会時に贈呈</div>
+  </div>
+</div>
+
+<!-- ===== BONUS (Change/me ギフティング) ===== -->
+<div class="bonus-section">
+  <div class="bonus-shikamo">
+    <span class="shikamo-tag">しかも<span class="accent">　今だけ　</span></span>
+  </div>
+  <div class="bonus-card">
+    <div class="label-collab">RIMINA<span class="sep">×</span>Change/me</div>
+    <img class="product-img" src="changeme_product.jpg" alt="Change/me お試しパック" loading="lazy">
+    <h2>
+      <span class="em">Change/me お試しパック</span><br>
+      もれなくプレゼント
+    </h2>
+    <p class="body">
+      <strong>Change/me</strong> は、内側から体のコンディションを整える<br>
+      <strong>インナーケアサプリ</strong>。<br>
+      水溶性食物繊維＋不溶性食物繊維で、毎日の習慣づくりを応援します。<br>
+      甘酸っぱい<strong>ザクロヨーグルト風味</strong>で続けやすい一品。
+    </p>
+    <div class="who">
+      <span class="who-chip">紹介者さま</span>
+      <span class="who-chip">ご紹介されたお友達</span>
+    </div>
+    <div class="limited">期間限定キャンペーン</div>
+  </div>
+</div>
+
+<!-- ===== HOW TO ===== -->
+<div class="how-section">
+  <h2 class="section-title">紹介の<span class="hl">3ステップ</span></h2>
+  <p class="section-sub">難しい手続きはありません。LINEを送るだけ。</p>
+  <div class="steps">
+    <div class="step">
+      <span class="num">1</span>
+      <h3>このページを友だちにシェア</h3>
+      <p>下の「LINEで紹介する」ボタンから、紹介したいお友達やご家族にURLを送ってください。</p>
+    </div>
+    <div class="step">
+      <span class="num">2</span>
+      <h3>お友達がRiminaのLINEに登録</h3>
+      <p>お友達が公式LINEを友だち追加 → 体験or入会のお申込み時に「紹介者：◯◯」とお伝えいただきます。</p>
+    </div>
+    <div class="step">
+      <span class="num">3</span>
+      <h3>両者に特典が反映</h3>
+      <p>お友達のご入会が確定したタイミングで、紹介者には<strong style="color:var(--rose-deep);">毎月500円引き</strong>、お友達には<strong style="color:var(--rose-deep);">+4回チケット</strong>が反映されます。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CTA ===== -->
+<div class="cta-section">
+  <div class="cta-box">
+    <h2>お友達とセミパーソナルレッスンを楽しもう！</h2>
+    <p>LINEを使って、いまから紹介できます。</p>
+    <a class="cta-btn" id="line-share-btn" href="#" onclick="shareToLine(); return false;">
+      <span class="ic">💬</span>LINEで紹介する
+    </a>
+    <div class="cta-sub">タップするとLINEのシェア画面が開きます</div>
+    <a class="cta-secondary" href="#" onclick="copyUrl(); return false;">URLをコピーする</a>
+  </div>
+</div>
+
+<!-- ===== NOTES ===== -->
+<div class="notes">
+  <h3>📝 ご利用の注意</h3>
+  <ul>
+    <li>紹介特典は<strong>お友達がご入会された後</strong>に反映されます。体験のみではキャンペーン対象外です。</li>
+    <li>紹介者の<strong>500円引きは継続中ずっと</strong>、お一人紹介ごとに月額から500円引かれます（複数人紹介で重複可）。</li>
+    <li>お友達の<strong>+4回チケット</strong>は入会月にプレゼント、有効期限は付与から2ヶ月です。</li>
+    <li>当月15日までに紹介者のお名前をお伝えいただくと、翌月1日からの会費に反映されます。</li>
+    <li>ご自身による別アカウントでのご入会は対象外です。</li>
+    <li><strong>Change/meお試しパック</strong>は<strong>期間限定キャンペーン</strong>のため、なくなり次第終了です。</li>
+    <li>キャンペーン内容は予告なく変更される場合があります。</li>
+  </ul>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="company">Rimina</div>
+  運営：株式会社Builds<br>
+  ご不明点はLINEトークまたは rimina@builds.ventures まで
+</footer>
+
+<script>
+  // この URL（自分自身の公開URL）を後で差し替えてください
+  // Netlifyに上げたあとの実URLが入ります
+  const PAGE_URL = 'https://roaring-jalebi-fc4b71.netlify.app/referral.html';
+  const SHARE_TEXT = '【Riminaお友だち紹介】\nRiminaのトレーニング、すごく良かったのでシェアします！\n体験レッスンもあるのでよかったら見てみてね 🌸\n';
+
+  function shareToLine() {
+    const url = encodeURIComponent(PAGE_URL);
+    const text = encodeURIComponent(SHARE_TEXT);
+    // LINEのシェアURLスキーム
+    window.location.href = `https://line.me/R/msg/text/?${text}${url}`;
+  }
+
+  function copyUrl() {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(PAGE_URL).then(() => {
+        alert('URLをコピーしました！\n' + PAGE_URL);
+      }).catch(() => {
+        prompt('このURLをコピーしてください', PAGE_URL);
+      });
+    } else {
+      prompt('このURLをコピーしてください', PAGE_URL);
+    }
+  }
+</script>
+
+</body>
+</html>
